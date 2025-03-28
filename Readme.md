@@ -20,6 +20,9 @@ CREATE ROLE store_user WITH LOGIN PASSWORD 'secret_password';
 
 - выдаём доступ ко всем привилегиям новому сервисному пользователю
 ```sql
+-- доступ к схеме public
+GRANT ALL PRIVILEGES ON SCHEMA public TO store_user;
+
 -- доступ ко всем существующим таблицам
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO store_user;
 

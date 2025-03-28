@@ -23,6 +23,7 @@ jobs:
           FLYWAY_URL: jdbc:postgresql://${{ secrets.DB_HOST }}:${{ secrets.DB_PORT }}/${{ secrets.DB_NAME }}
           FLYWAY_USER: ${{ secrets.DB_USER }}
           FLYWAY_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          FLYWAY_LOCATIONS: filesystem:./migrations
         run: |
           flyway migrate
 
