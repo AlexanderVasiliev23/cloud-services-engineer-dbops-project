@@ -30,3 +30,15 @@ GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO store_user;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public
     GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO store_user;
 ```
+
+# Запрос на получение кол-ва проданных сосисок за последние 7 дней с разбивкой по дням
+
+```sql
+SELECT o.date_created, SUM(op.quantity)
+FROM orders AS o
+         JOIN order_product AS op ON o.id = op.order_id
+WHERE status = 'shipped'
+  AND o.date_created > NOW() - INTERVAL '7 DAY'
+GROUP BY o.date_created
+;
+```
